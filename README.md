@@ -28,7 +28,7 @@
 
 > sudo apt-get install docker.io git
 
-> git clone https://github.com/alex-bormotov/
+> git clone https://github.com/alex-bormotov/lazy-nicehash
 
 > cd lazy-nicehash
 
