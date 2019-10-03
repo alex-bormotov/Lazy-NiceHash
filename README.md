@@ -8,32 +8,53 @@
 
 ### Install on Ubuntu (Docker)
 
-> sudo apt-get update
+```bash
+sudo apt-get update
+```
 
-> sudo apt-get install \
+```bash
+sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common
+```
 
-> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
 
-> sudo add-apt-repository \
+```bash
+sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
+```
 
-> sudo apt-get update
+```bash
+sudo apt-get update
+```
 
-> sudo apt-get install docker.io git
+```bash
+sudo apt-get install docker.io git
+```
 
-> git clone https://github.com/alex-bormotov/lazy-nicehash
+```bash
+git clone https://github.com/alex-bormotov/lazy-nicehash
+```
 
-> cd lazy-nicehash
+```bash
+cd lazy-nicehash
+```
 
-> cp config.json.sample config.json, and edit config.json
+```bash
+cp config.json.sample config.json, and edit config.json
+```
 
-> sudo docker build -t lazy-nicehash .
+```bash
+sudo docker build -t lazy-nicehash .
+```
 
-> sudo docker lazy-nicehash &
+```bash
+sudo docker lazy-nicehash &
