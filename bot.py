@@ -23,11 +23,6 @@ exchange_info = public_api.get_exchange_markets_info()
 last_start = datetime.utcnow()
 
 
-def check_time():
-    if last_start + timedelta(hours=float(get_config()["exchange_period_hours"])) < datetime.utcnow():
-        return True
-
-
 def discord_send_message(notification):
     webhookurl = get_config()["discord_webhook_url"]
     formdata = (
@@ -74,12 +69,12 @@ def main():
     global last_start
 
     while True:
-        if check_time() != True:
+        if last_start + timedelta(hours=float(get_config()["exchange_period_hours"])) < datetime.utcnow():
+            make_trade()
+            last_start = datetime.utcnow()
             time.sleep(3600)
             continue
         else:
-            make_trade()
-            last_start = datetime.utcnow()
             time.sleep(3600)
             continue
 
