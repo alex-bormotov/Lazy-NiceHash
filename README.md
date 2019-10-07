@@ -60,3 +60,38 @@ sudo docker build -t lazy-nicehash .
 
 ```bash
 sudo docker lazy-nicehash &
+```
+
+### Update
+
+```bash
+cd lazy-nicehash
+```
+
+```bash
+sudo docker ps
+```
+
+```bash
+sudo docker stop CONTAINER ID
+```
+
+```bash
+sudo docker rm CONTAINER ID
+```
+
+```bash
+sudo docker rmi lazy-nicehash
+```
+
+```bash
+git pull origin master
+```
+
+```bash
+sudo docker build -t lazy-nicehash .
+```
+
+```bash
+sudo docker run lazy-nicehash &
+```
