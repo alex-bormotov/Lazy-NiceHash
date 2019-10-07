@@ -57,22 +57,19 @@ def discord_send_message(notification):
 #        print((str(e)))
 
 
-def get_start_balance():
-    discord_send_message(f'{private_api.get_accounts()[0]["balance"]} BTC')
-    discord_send_message(f'{private_api.get_accounts()[2]["balance"]} XRP')
-
-
 def make_trade():
+    discord_send_message(f'BTC balance before trade is {private_api.get_accounts()[0]["balance"]}')
+    discord_send_message(f'XRP balance before trade is {private_api.get_accounts()[2]["balance"]}')
     new_buy_market_order = private_api.create_exchange_buy_market_order(exchange_info['symbols'][1]['symbol'], private_api.get_accounts()[0]["balance"])
     discord_send_message(f'Bought {new_buy_market_order["executedQty"]} XRP')
-    discord_send_message('Balances now are:')
-    get_start_balance()
+    discord_send_message(f'Total XRP balance after trade is {private_api.get_accounts()[2]["balance"]}')
 
 
 def main():
     discord_send_message("Starting ...")
-    discord_send_message('Balances now are:')
-    get_start_balance()
+    discord_send_message('Total start balances are:')
+    discord_send_message(f'{private_api.get_accounts()[0]["balance"]} BTC')
+    discord_send_message(f'{private_api.get_accounts()[2]["balance"]} XRP')
 
     global last_start
 
