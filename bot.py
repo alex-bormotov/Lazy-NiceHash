@@ -85,6 +85,8 @@ def make_trade():
 
 def main():
 
+    discord_send_message("Starting ...")
+
     global last_start
 
     while True:
