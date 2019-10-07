@@ -17,28 +17,19 @@ host = 'https://api2.nicehash.com'
 organisation_id = get_config()["nicehash_organization_id"]
 key = get_config()["nicehash_api_key"]
 secret = get_config()["nicehahs_api_secret"]
-
 private_api = nicehash.private_api(host, organisation_id, key, secret)
 public_api = nicehash.public_api(host, True)
-
 exchange_info = public_api.get_exchange_markets_info()
-
-
 last_start = datetime.utcnow()
 
 
 def check_time():
-
-    global last_start
-
     if last_start + timedelta(hours=float(get_config()["exchange_period_hours"])) < datetime.utcnow():
         return True
 
 
 def discord_send_message(notification):
-
     webhookurl = get_config()["discord_webhook_url"]
-
     formdata = (
         '------:::BOUNDARY:::\r\nContent-Disposition: form-data; name="content"\r\n\r\n'
         + notification
@@ -67,24 +58,19 @@ def discord_send_message(notification):
 
 
 def get_start_balance():
-
     discord_send_message(f'{private_api.get_accounts()[0]["balance"]} BTC')
     discord_send_message(f'{private_api.get_accounts()[2]["balance"]} XRP')
 
 
 def make_trade():
-
     new_buy_market_order = private_api.create_exchange_buy_market_order(exchange_info['symbols'][1]['symbol'], private_api.get_accounts()[0]["balance"])
-
     discord_send_message(f'Bought {new_buy_market_order["executedQty"]} XRP')
     discord_send_message('Balances now are:')
     get_start_balance()
 
 
 def main():
-
     discord_send_message("Starting ...")
-
     discord_send_message('Balances now are:')
     get_start_balance()
 
