@@ -59,7 +59,7 @@ sudo docker build -t lazy-nicehash .
 ```
 
 ```bash
-sudo docker lazy-nicehash &
+sudo docker run lazy-nicehash &
 ```
 
 ### Update
