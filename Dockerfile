@@ -14,8 +14,7 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 
 
 COPY requirements.txt /lazy-nicehash/
-RUN pip3 install numpy --no-cache-dir \
-  && pip3 install -r requirements.txt --no-cache-dir
+RUN pip3 install -r requirements.txt --no-cache-dir
 
 
 COPY . /lazy-nicehash/
