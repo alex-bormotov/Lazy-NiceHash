@@ -49,8 +49,10 @@ cd lazy-nicehash
 ```
 
 ```bash
-cp config.json.sample config.json, and edit config.json
+cp config.json.sample config.json
 ```
+
+> edit config.json
 
 ```bash
 sudo docker build -t lazy-nicehash .
