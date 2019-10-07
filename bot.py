@@ -7,9 +7,19 @@ from time import sleep
 from datetime import datetime, timedelta
 
 
+# https://github.com/nicehash/rest-clients-demo
+host = 'https://api2.nicehash.com'
+organisation_id = get_config()["nicehash_organization_id"]
+key = get_config()["nicehash_api_key"]
+secret = get_config()["nicehahs_api_secret"]
+
+private_api = nicehash.private_api(host, organisation_id, key, secret)
+public_api = nicehash.public_api(host, True)
+
+exchange_info = public_api.get_exchange_markets_info()
+
 
 last_start = datetime.utcnow()
-
 
 
 def check_time():
@@ -20,12 +30,10 @@ def check_time():
         return True
 
 
-
 def get_config():
     with open("config.json", "r") as read_file:
         config = json.load(read_file)
         return config
-
 
 
 def discord_send_message(notification):
@@ -59,22 +67,7 @@ def discord_send_message(notification):
 #        print((str(e)))
 
 
-
 def make_trade():
-
-    # https://github.com/nicehash/rest-clients-demo
-    host = 'https://api2.nicehash.com'
-    organisation_id = get_config()["nicehash_organization_id"]
-    key = get_config()["nicehash_api_key"]
-    secret = get_config()["nicehahs_api_secret"]
-
-    private_api = nicehash.private_api(host, organisation_id, key, secret)
-    public_api = nicehash.public_api(host, True)
-
-    exchange_info = public_api.get_exchange_markets_info()
-
-    # current_market = exchange_info['symbols'][1]['symbol'] # XRPBTC
-    # btc_balance = private_api.get_accounts()[0]["balance"] # BTC balance
 
     new_buy_market_order = private_api.create_exchange_buy_market_order(exchange_info['symbols'][1]['symbol'], private_api.get_accounts()[0]["balance"])
 
@@ -82,10 +75,17 @@ def make_trade():
     discord_send_message(f'Balance now is {private_api.get_accounts()[2]["balance"]} XRP')
 
 
+def get_start_balance():
+
+    discord_send_message(f'Start BTC balance now is {private_api.get_accounts()[0]["balance"]}')
+    discord_send_message(f'Start XRP balance now is {private_api.get_accounts()[2]["balance"]}')
+
 
 def main():
 
     discord_send_message("Starting ...")
+
+    get_start_balance()
 
     global last_start
 
