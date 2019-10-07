@@ -7,6 +7,11 @@ from time import sleep
 from datetime import datetime, timedelta
 
 
+def get_config():
+    with open("config.json", "r") as read_file:
+        config = json.load(read_file)
+        return config
+
 # https://github.com/nicehash/rest-clients-demo
 host = 'https://api2.nicehash.com'
 organisation_id = get_config()["nicehash_organization_id"]
@@ -28,12 +33,6 @@ def check_time():
 
     if last_start + timedelta(hours=float(get_config()["exchange_period_hours"])) < datetime.utcnow():
         return True
-
-
-def get_config():
-    with open("config.json", "r") as read_file:
-        config = json.load(read_file)
-        return config
 
 
 def discord_send_message(notification):
