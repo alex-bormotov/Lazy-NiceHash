@@ -57,7 +57,7 @@ def discord_send_message(notification):
 def get_balance(coin):
     # BTC = 0
     # XRP = 2
-    return private_api.get_accounts()[coin]["balance"]
+    return float(private_api.get_accounts()[coin]["balance"])
 
 
 def make_trade():
@@ -66,7 +66,7 @@ def make_trade():
     discord_send_message(f'XRP balance before trade is {get_balance(2)}')
 
     try:
-        new_buy_market_order = private_api.create_exchange_buy_market_order(exchange_info['symbols'][1]['symbol'], private_api.get_accounts()[0]["balance"])
+        new_buy_market_order = private_api.create_exchange_buy_market_order(exchange_info['symbols'][1]['symbol'], get_balance(0))
     except Exception as e:
         discord_send_message(str(e))
 
