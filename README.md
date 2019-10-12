@@ -1,4 +1,4 @@
-# lazy-nicehash
+# Lazy-NiceHash
 
 
 > This bot does auto exchange BTC (that was mined) to XRP on NiceHash exchange once a day then sends a notification to Discord.
