@@ -98,7 +98,11 @@ sudo docker run lazy-nicehash &
 
 ---
 
-> If my code was useful for you may buy me tea: 
+##### Donate
+
+> If my code was useful for you may buy me coffee:
+
+> [My Binance Referal Link](https://www.binance.com/en/register?ref=35560900)
 
 > BTC 1LTwU8hVYxxpHUDf3wYNDjnS9kK4PDdtgT
 
