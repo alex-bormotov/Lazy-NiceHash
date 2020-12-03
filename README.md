@@ -96,14 +96,3 @@ sudo docker build -t lazy-nicehash .
 sudo docker run lazy-nicehash &
 ```
 
----
-
-##### Donate
-
-> If my code was useful for you may buy me coffee:
-
-> [My Binance Referal Link](https://www.binance.com/en/register?ref=35560900)
-
-> BTC 1LTwU8hVYxxpHUDf3wYNDjnS9kK4PDdtgT
-
-> ETH 0x23913F4ab3839a8b7bB987F348b8d974C045Dd17
